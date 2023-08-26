@@ -43,8 +43,6 @@ class LocationFetcher {
         desiredAccuracy: LocationAccuracy.low);
     latitude = position.latitude;
     longitude = position.longitude;
-    debugPrint('latitude: $latitude');
-    debugPrint('longitude: $longitude');
     return await Geolocator.getCurrentPosition();
   }
 }
