@@ -22,20 +22,20 @@ class LocationScreenState extends State<LocationScreen> {
   void initState() {
     super.initState();
     debugPrint('initState called');
-    updateUI(widget.locationWeather, widget.cityLocation);
+
+    updateUI(
+        weatherData: widget.locationWeather, cityLocation: widget.cityLocation);
   }
 
-  void updateUI(dynamic weatherData, dynamic cityLocation) {
-    setState(() {
-      cityName = cityLocation[0]['name'];
-      double temprature = weatherData['current']['temp'];
-      temp = temprature.toInt();
-      var condition = weatherData['current']['weather'][0]['id'];
-      weatherIcon = weather.getWeatherIcon(condition);
-      weatherMessage = weather.getMessage(temp);
-      debugPrint(
-          ' Isı : $temp \n Hava durumu : $condition \n Bölge : $cityName ');
-    });
+  void updateUI({dynamic weatherData, dynamic cityLocation}) {
+    cityName = cityLocation[0]['name'];
+    double temprature = weatherData['current']['temp'];
+    temp = temprature.toInt();
+    var condition = weatherData['current']['weather'][0]['id'];
+    weatherIcon = weather.getWeatherIcon(condition);
+    weatherMessage = weather.getMessage(temp);
+    debugPrint(
+        ' Isı : $temp \n Hava durumu : $condition \n Bölge : $cityName ');
   }
 
   @override
