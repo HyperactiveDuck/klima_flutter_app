@@ -16,23 +16,23 @@ class CityScreenState extends State<CityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 254, 211, 208),
+        backgroundColor: appBarBackground1,
         centerTitle: true,
         leading: TextButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Icon(
+          child: Icon(
             Icons.arrow_back_ios,
             size: 35.0,
-            color: Colors.black,
+            color: black,
           ),
         ),
         automaticallyImplyLeading: false,
         title: Text(
           'Search by City',
           style: GoogleFonts.aBeeZee(
-              color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold),
+              color: black, fontSize: 30.0, fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(
@@ -58,8 +58,8 @@ class CityScreenState extends State<CityScreen> {
                     ),
                     const SizedBox(height: 20.0),
                     TextField(
-                      style: const TextStyle(
-                        color: Colors.black,
+                      style: TextStyle(
+                        color: black,
                       ),
                       textAlign: TextAlign.center,
                       decoration: kTextFieldInputDecoration,
@@ -73,9 +73,7 @@ class CityScreenState extends State<CityScreen> {
               const SizedBox(height: 100.0),
               TextButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 255, 242, 177),
-                  ),
+                  backgroundColor: MaterialStateProperty.all<Color>(primary),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
@@ -92,7 +90,7 @@ class CityScreenState extends State<CityScreen> {
                     style: GoogleFonts.aBeeZee(
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        color: black),
                   ),
                 ),
               ),

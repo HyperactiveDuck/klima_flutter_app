@@ -27,3 +27,8 @@ InputDecoration kTextFieldInputDecoration = InputDecoration(
     borderSide: BorderSide.none,
   ),
 );
+
+Color primary = const Color.fromARGB(255, 255, 242, 177);
+Color black = Colors.black;
+Color secondery = const Color.fromARGB(255, 163, 203, 245);
+Color appBarBackground1 = const Color.fromARGB(255, 163, 203, 245);

@@ -40,7 +40,7 @@ class LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-          child: SpinKitDoubleBounce(
+          child: SpinKitFadingCircle(
         color: Colors.white,
         size: 100.0,
       )),

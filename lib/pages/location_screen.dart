@@ -79,12 +79,12 @@ class LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 163, 203, 245),
+        backgroundColor: secondery,
         automaticallyImplyLeading: false,
         title: Text(
           'Klima',
           style: GoogleFonts.aBeeZee(
-              color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold),
+              color: black, fontSize: 30.0, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         leading: Tooltip(
@@ -96,10 +96,10 @@ class LocationScreenState extends State<LocationScreen> {
               updateUI(weatherData: weatherData, cityLocation: locationData);
               setState(() {});
             },
-            child: const Icon(
+            child: Icon(
               Icons.location_searching_outlined,
               size: 35.0,
-              color: Colors.black,
+              color: black,
             ),
           ),
         ),
@@ -117,10 +117,10 @@ class LocationScreenState extends State<LocationScreen> {
                   setState(() {});
                 }
               },
-              child: const Icon(
+              child: Icon(
                 Icons.search,
                 size: 40.0,
-                color: Colors.black,
+                color: black,
               ),
             ),
           ),
@@ -147,7 +147,7 @@ class LocationScreenState extends State<LocationScreen> {
                   Text(
                     cityName,
                     style: GoogleFonts.robotoMono(
-                        color: Colors.black,
+                        color: black,
                         fontSize: 50.0,
                         fontWeight: FontWeight.bold),
                   ),
