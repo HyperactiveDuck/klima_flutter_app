@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
-import 'package:klima_flutter_app/pages/loading_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:klima_flutter_app/utilities/constants.dart';
 import 'package:klima_flutter_app/services/weather.dart';
 
@@ -76,75 +78,90 @@ class LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: const AssetImage('images/location_background.jpg'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(0.8), BlendMode.dstATop),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 163, 203, 245),
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Klima',
+          style: GoogleFonts.aBeeZee(
+              color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        leading: Tooltip(
+          message: 'Refresh your location.',
+          child: TextButton(
+            onPressed: () async {
+              var weatherData = await weather.getWeatherData();
+              var locationData = await weather.getLocationData();
+              updateUI(weatherData: weatherData, cityLocation: locationData);
+              setState(() {});
+            },
+            child: const Icon(
+              Icons.location_searching_outlined,
+              size: 35.0,
+              color: Colors.black,
+            ),
           ),
         ),
-        constraints: const BoxConstraints.expand(),
-        child: SafeArea(
+        actions: <Widget>[
+          Tooltip(
+            message: 'Search by city name.',
+            child: TextButton(
+              onPressed: () async {
+                var typedName =
+                    await Navigator.pushNamed(context, '/CityScreen');
+                if (typedName != null) {
+                  var weatherDataByCity =
+                      await weather.getCityWeather(typedName.toString());
+                  updateUI(weatherDataByCity: weatherDataByCity);
+                  setState(() {});
+                }
+              },
+              child: const Icon(
+                Icons.search,
+                size: 40.0,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/location_background.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[],
+              ),
+              Column(
                 children: <Widget>[
-                  TextButton(
-                    onPressed: () async {
-                      var weatherData = await weather.getWeatherData();
-                      var locationData = await weather.getLocationData();
-                      updateUI(
-                          weatherData: weatherData, cityLocation: locationData);
-                      setState(() {});
-                    },
-                    child: const Icon(
-                      Icons.near_me,
-                      size: 50.0,
-                    ),
+                  Text(
+                    weatherIcon,
+                    style: kConditionTextStyle,
                   ),
-                  TextButton(
-                    onPressed: () async {
-                      var typedName =
-                          await Navigator.pushNamed(context, '/CityScreen');
-                      if (typedName != null) {
-                        var weatherDataByCity =
-                            await weather.getCityWeather(typedName.toString());
-                        updateUI(weatherDataByCity: weatherDataByCity);
-                        setState(() {});
-                      }
-                    },
-                    child: const Icon(
-                      Icons.location_city,
-                      size: 50.0,
-                    ),
+                  const SizedBox(
+                    height: 100.0,
+                  ),
+                  Text(
+                    ' $temp°',
+                    style: kTempTextStyle,
                   ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      '$temp°',
-                      style: kTempTextStyle,
-                    ),
-                    Text(
-                      weatherIcon,
-                      style: kConditionTextStyle,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 15.0),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
                 child: Text(
-                  '$weatherMessage in $cityName',
-                  textAlign: TextAlign.right,
+                  'Tip: \n$weatherMessage in $cityName',
+                  textAlign: TextAlign.center,
                   style: kMessageTextStyle,
                 ),
               ),
