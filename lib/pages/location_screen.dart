@@ -145,6 +145,16 @@ class LocationScreenState extends State<LocationScreen> {
               Column(
                 children: <Widget>[
                   Text(
+                    cityName,
+                    style: GoogleFonts.robotoMono(
+                        color: Colors.black,
+                        fontSize: 50.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 50.0,
+                  ),
+                  Text(
                     weatherIcon,
                     style: kConditionTextStyle,
                   ),
@@ -158,7 +168,7 @@ class LocationScreenState extends State<LocationScreen> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 50),
                 child: Text(
                   'Tip: \n$weatherMessage in $cityName',
                   textAlign: TextAlign.center,

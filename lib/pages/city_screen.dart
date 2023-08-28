@@ -16,7 +16,7 @@ class CityScreenState extends State<CityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 163, 203, 245),
+        backgroundColor: const Color.fromARGB(255, 254, 211, 208),
         centerTitle: true,
         leading: TextButton(
           onPressed: () {
@@ -61,6 +61,7 @@ class CityScreenState extends State<CityScreen> {
                       style: const TextStyle(
                         color: Colors.black,
                       ),
+                      textAlign: TextAlign.center,
                       decoration: kTextFieldInputDecoration,
                       onChanged: (value) {
                         searchedCityName = value;
@@ -73,7 +74,7 @@ class CityScreenState extends State<CityScreen> {
               TextButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromARGB(255, 163, 203, 245),
+                    Color.fromARGB(255, 255, 242, 177),
                   ),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
@@ -84,12 +85,15 @@ class CityScreenState extends State<CityScreen> {
                 onPressed: () {
                   Navigator.pop(context, searchedCityName);
                 },
-                child: Text(
-                  'Get Weather',
-                  style: GoogleFonts.aBeeZee(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Get Weather',
+                    style: GoogleFonts.aBeeZee(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
                 ),
               ),
               const SizedBox(height: 20.0)

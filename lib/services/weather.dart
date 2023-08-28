@@ -1,7 +1,7 @@
 import 'package:klima_flutter_app/services/location.dart';
 import 'package:klima_flutter_app/services/networking.dart';
 
-var apiKey = "2365074cdb2b5aab4c78d415855e9d06";
+var apiKey = "put your api key here";
 const openWeatherMapWeather = '';
 const openWeatherMapLocation = '';
 

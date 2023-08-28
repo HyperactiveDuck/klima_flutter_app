@@ -13,11 +13,6 @@ class NetworkHelper {
 
     if (response.statusCode == 200) {
       var decodedData = jsonDecode(data);
-      // double temp = decodedData['current']['temp'];
-      // String condition = decodedData['current']['weather'][0]['main'];
-      // String cityName = decodedData['timezone'];
-      // debugPrint(
-      //     ' Isı : $temp \n Hava durumu : $condition \n Saat bölgesi : $cityName ');
       return decodedData;
     } else {
       debugPrint('error');
