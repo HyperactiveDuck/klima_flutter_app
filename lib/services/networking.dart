@@ -39,4 +39,20 @@ class NetworkHelper {
       debugPrint('error');
     }
   }
+
+  Future getWeatherByCityName(url3) async {
+    http.Response response = await http.get(
+      Uri.parse(
+        url3,
+      ),
+    );
+    var data = response.body;
+
+    if (response.statusCode == 200) {
+      var decodedData3 = jsonDecode(data);
+      return decodedData3;
+    } else {
+      debugPrint('error');
+    }
+  }
 }
